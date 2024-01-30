@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link th:href="@{/style/style_list_product/list_product.css}" rel="stylesheet"/>
+    <title>Lista de Produto</title>
+</head>
+<body>
+    <h1>Lista de produtos cadastrados</h1>
+        <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigo de barras</th>
+                <th>Produto</th>
+                <th>Unid. Medida</th>
+                <th>Preço</th>
+                <th>Excluir</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.barCode}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.unit}"></td>
+                <td th:text="${product.preco}"></td>
+                <td>
+                    <form action="#" th:action="@{'/products/delete/{id}'(id=${product.id})}">
+                        <button type="submit" class="btn">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="#" th:action="@{'/products/edit/{id}'(id=${product.id})}">
+                        <button type="submit" class="btn">Editar</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

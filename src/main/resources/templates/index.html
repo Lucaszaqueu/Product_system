@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link th:href="@{/style/product_registration/style.css}" rel="stylesheet"/>
+<body>
+    
+    <h1>Cadastro de protudos</h1>
+
+    <div class="container" >
+
+        <form action="#" th:action="@{/products/save}" th:object="${product}" method="post" id="formulario">
+
+            <div class="wrapper">
+
+                <div>Codigo de barras: <input type="text" th:field="*{barCode}" id="Codigo de barras" name="Codigo de barras"></div>
+                <div>Produto: <input type="text" th:field="*{name}" id="Produto" name="Produto"></div>
+                <div>Unid. Medida: <input type="text" th:field="*{unit}" id="Unid. Medida" name="Unid. Medida"></div>
+                <div>Preço do Produto: <input type="number" th:field="*{preco}" id="Preço" name="Preço do Produto" step="0.01"></div>
+
+                <div><input type="submit" value="Cadastrar Produto"></div>
+            </div>
+        </form>
+
+        <form action="#" th:action="@{/products/}" id="button">
+            <div class="wrapper">
+                <button th:href="@{/list_product}">Listar Produtos</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
